@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-extend='Orderline'>
+        <t t-jquery='.info-list' t-operation='replace'>
+            <ul class="info-list">
+                <t t-if="line.get_quantity_str() !== '1' || line.selected ">
+                    <li class="info">
+                        <em>
+                            <t t-esc="line.get_quantity_str()" />
+                        </em>
+                        <t t-esc="line.get_unit().name" />
+                        at
+                        <t t-esc="widget.format_currency(line.get_unit_display_price(),'Product Price')" />
+                        /
+                        <t t-esc="line.get_unit().name" />
+                    </li>
+                    <li class="info">
+                        marge :
+                            <t t-esc="widget.format_currency(line.get_display_marge(),'Product Price')"/>
+                    </li>
+                </t>
+                <t t-if="line.get_discount_str() !== '0'">
+                    <li class="info">
+                        With a
+                        <em>
+                            <t t-esc="line.get_discount_str()" />%
+                        </em>
+                        discount test
+                    </li>
+<!--                    <li class="info">-->
+<!--                        marge -->
+<!--                        <em>-->
+<!--                            <t t-esc="widget.format_currency(line.get_display_marge())"/>-->
+<!--                        </em>-->
+<!--                    </li>-->
+                </t>
+            </ul>
+        </t>
+    </t>
+    <t t-extend='OrderWidget'>
+        <t t-jquery='.subentry' t-operation='after'>
+            <div class='marge'>Marge: <span class="value">0 CFA</span></div>
+        </t>
+    </t>
+</templates>
