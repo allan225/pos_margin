@@ -4,7 +4,7 @@
     'sequence':3,
     'summary': "Point of sale margin",
     'description': """Long description""",
-    'author': "Keryatec",
+    'author': "Parfait AllA",
     'category': 'Point of Sale',
     'version': '11.0.1',
     'depends': ['point_of_sale', 'sale_margin'],
